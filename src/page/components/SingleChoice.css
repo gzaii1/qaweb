@@ -1,0 +1,50 @@
+.radioGroup_delete{
+    /* float:right; */
+    /* position: fixed; */
+    float: left;
+    margin-left: 2.2rem;
+}
+.radioGroup_delete .MuiFormGroup-root .MuiFormControlLabel-root{
+    margin:0!important;
+}
+
+.radioGroup_edit{
+    display: flex!important;
+    justify-content: center;
+    flex-direction: column !important;
+    white-space: nowrap!important;
+}
+.radioGroup_edit:before{
+    display:block;
+    height: 0px;
+    content: '正确答案';
+    position: relative;
+    top:-1rem;
+}
+.radioGroup_edit .MuiFormControlLabel-root{
+  margin: 8px 8px 12.01px 8px;
+}
+
+.ButtonArea{
+    margin:5px 8px 11px 8px;
+    max-width: 41.98px;
+    max-height: 41.98px;
+    cursor: pointer;
+    align-items: center;
+    margin-left: -11px;
+    margin-right: 16px;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+}
+.Single_deleteBtn{
+    top: 0;
+    left: 0;
+    width: 100%;
+    cursor: inherit;
+    /* height: 100%; */
+    margin: 0;
+    /* opacity: 0; */
+    padding: 0;
+    /* z-index: 1; */
+    position: relative;
+}

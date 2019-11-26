@@ -1,0 +1,190 @@
+.box{
+	box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
+	padding: 24px 16px;
+	color: rgba(0, 0, 0, 0.87);
+	transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+	background-color: #fff;
+	border-radius: 12px;
+	/* 测试写的 */
+	margin-bottom: 1rem;
+	min-width: 50vw;
+	max-width: 70vw;
+	padding-bottom: 2rem;
+	/* 测试写的 */
+    position: relative;
+    overflow: hidden;
+}
+
+.addicon{
+	width: 36px!important;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)!important;
+    box-sizing: border-box!important;
+    height: 36px!important;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif!important;
+    font-weight: 500!important;
+    line-height: 1.75!important;
+    border-radius: 50%!important;
+    letter-spacing: 0.02857em!important;
+    text-transform: uppercase!important;
+}
+
+.backOrNext{
+	width:34px!important;
+	height:34px!important;
+	border-radius: 50%!important;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)!important;
+    box-sizing: border-box!important;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif!important;
+    font-weight: 500!important;
+    letter-spacing: 0.02857em!important;
+    text-transform: uppercase!important;
+	color: rgba(0, 0, 0, 0.87);
+}
+
+.Fab-group{
+    width: 8rem;
+    float: right;
+    position: relative;
+    right: 0;
+    bottom: 20px;
+}
+
+.Fab-group .backOrNext{
+	margin-left:1rem;
+}
+
+.INPUT_CARD{
+	width: 80%;
+	margin:0 0 1rem 0!important;
+}
+
+.INPUT_CARD .MuiFormLabel-root{
+	font-size:1.6rem;
+}
+.INPUT_CARD input{
+	height:2rem;
+	line-height: 2rem;
+}
+
+.success{
+	color:green!important;
+    padding: 0;
+    font-size: 0.875rem!important;
+    min-width: 0;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)!important;
+    box-sizing: border-box;
+    min-height: 36px!important;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms!important;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif!important;
+    font-weight: 500!important;
+    line-height: 1.75!important;
+    /*border-radius: 50%!important;*/
+    letter-spacing: 0.02857em!important;
+    text-transform: uppercase!important;
+    /*background-color: green!important;*/
+}
+
+.success:before{
+	transform: scaleX(1);
+    border-bottom-color: #f44336;
+}
+
+.nope{
+	height:0px!important;
+}
+
+
+.Fab-group-main{
+    width: 8rem;
+    float: right;
+    position: fixed;
+    right: 0;
+    bottom: 20px;
+
+}
+.Fab-group-main .MuiFab-sizeSmall{
+	margin-left:1rem;
+	width:34px!important;
+}
+
+..addicon-red{
+    border-radius: 50%!important;
+    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12)!important;
+    box-sizing: border-box!important;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif!important;
+    font-weight: 500!important;
+    letter-spacing: 0.02857em!important;
+    text-transform: uppercase!important;
+}
+
+.over{
+    top: 1rem;
+    /*right: 0rem;*/
+    position: fixed;
+    height: auto;
+}
+.over ..backOrNext{
+	float: right;
+    right: 2rem;
+}
+
+.under{
+    position: fixed;
+    /*right: 2rem;*/
+}
+.block{
+	display:inline-block;
+	overflow: hidden;
+	box-shadow: 0px 0px!important;
+}
+.box-title{
+	font-size:2rem;
+	margin-bottom: 1rem;
+}
+
+
+
+.radioGroup{
+		display: flex!important;
+		justify-content: center;
+		flex-direction: column !important;
+        white-space: nowrap!important;
+        float:left;
+}
+
+.radioGroup .radio{
+	min-width: 3rem;
+    max-width: 10rem;
+    display: inline!important;
+
+}
+
+.add_btn_group {
+	margin-top: 1rem;
+	min-width: 20rem;
+	max-width: 28rem;
+	/* color:#ffffff!important;
+	background-color: #3f51b5!important; */
+}
+.add_btn_group .MuiIconButton-label{
+	/* color:#ffffff; */
+}
+.add_btn_group input{
+	min-width: 23rem!important;
+	/* color:#ffffff!important; */
+	font-size: 1.2rem;
+}
+.AddNewQuestion{
+	margin-top: 3rem;
+	margin-bottom: 3rem;
+	text-align: center;
+
+}
+.myfooter{
+	height: 5rem;
+  width: 100%;
+  background: #10105A;
+}
