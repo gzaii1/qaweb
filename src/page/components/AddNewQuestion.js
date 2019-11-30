@@ -2,7 +2,7 @@ import React, {
 	useState,
 	useEffect,
 	useReducer,
-} from 'react';
+} from 'react'
 import {
 	Button,
 	Box,
@@ -23,15 +23,15 @@ import {
 	DialogTitle,
 	DialogContent,
 	DialogContentText,
-} from '@material-ui/core';
-import axios from 'axios';
-import 'animate.css';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+} from '@material-ui/core'
+import axios from 'axios'
+import 'animate.css'
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
 import {
 	amber,
 	green
-} from '@material-ui/core/colors';
+} from '@material-ui/core/colors'
 import {
 	Warning as WarningIcon,
 	Error as ErrorIcon,
@@ -45,13 +45,18 @@ import {
 	DeleteForever as DeleteForeverIcon,
 	Cancel as CancelIcon,
 	Edit as EditIcon,
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 import {
 	makeStyles
-} from '@material-ui/core/styles';
+} from '@material-ui/core/styles'
 import useForm from 'react-hook-form'
 import MyDialog from '../../utils/myDialog/MyDialog'
 import MyAlert from '../../utils/myAlert/MyAlert'
+
+import axiosUtil from '../../utils/axiosUtil/axiosUtil'
+
+// axios异步获取数据
+const AxUtil = new axiosUtil()
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -61,7 +66,7 @@ const useStyles = makeStyles(theme => ({
 	formControl: {
 		margin: theme.spacing(1),
 	},
-}));
+}))
 
 function AddNewQuestion({fetchData}){
   // 获取全部问题
@@ -144,13 +149,14 @@ function AddNewQuestion({fetchData}){
 			MyAlert.show('请选择问题的类型!', 'error')
 			return
 		} else {
-			const data = await axios.post('http://guohan912.cn/api/question/createQuestion/', body)
-			if (data.status === 200) {
-				MyAlert.show('问题创建成功!', 'success')
-				deleteAnimate('new_Question_Box', 300)
-			} else {
-				MyAlert.show('未知错误!', 'error')
-			}
+      const {success, data} = await AxUtil.setUrl('question/createQuestion/').setType('POST').setBody(body).getData()
+
+      if(success){
+        MyAlert.show('问题创建成功!', 'success')
+        deleteAnimate('new_Question_Box', 300)
+      }else{
+        MyAlert.show('未知错误!', 'error')
+      }
 		}
 	}
 
@@ -306,4 +312,4 @@ function AddNewQuestion({fetchData}){
     </Box>
 }
 
-export default AddNewQuestion;
+export default AddNewQuestion

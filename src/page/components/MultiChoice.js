@@ -2,7 +2,7 @@ import React, {
     useState,
     useEffect,
     useMemo,
-} from 'react';
+} from 'react'
 import {
     Box,
 	Paper,
@@ -21,13 +21,13 @@ import {
     FormHelperText,
     Checkbox,
     Typography,
-} from '@material-ui/core';
-import axios from 'axios';
-import '../HomePage/home.css';
-import './MultiChoice.css';
-import {Animated} from "react-animated-css";
+} from '@material-ui/core'
+import axios from 'axios'
+import '../HomePage/home.css'
+import './MultiChoice.css'
+import {Animated} from "react-animated-css"
 import moment from 'moment'
-// import 'animate.css';
+// import 'animate.css'
 import {
 	Warning as WarningIcon,
 	HighlightOff as HighlightOffIcon,
@@ -36,15 +36,18 @@ import {
 	CheckCircle as CheckCircleIcon,
 	Add as AddIcon,
     DeleteSweep as DeleteSweepIcon
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 import {
 	makeStyles
-} from '@material-ui/core/styles';
+} from '@material-ui/core/styles'
 import useForm from 'react-hook-form'
-
 import MyAlert from '../../utils/myAlert/MyAlert'
 import MyDialog from '../../utils/myDialog/MyDialog'
 
+import axiosUtil from '../../utils/axiosUtil/axiosUtil'
+
+// axios异步获取数据
+const AxUtil = new axiosUtil()
 
 const useStyles = makeStyles(theme => ({
 	container: {
@@ -54,7 +57,7 @@ const useStyles = makeStyles(theme => ({
 	formControl: {
 		margin: theme.spacing(1),
 	},
-}));
+}))
 
 
 const MultiChoice = React.memo(({data, animateFlag, fetchData})=>{
@@ -77,19 +80,19 @@ const MultiChoice = React.memo(({data, animateFlag, fetchData})=>{
             correctness:false
         }
         // 添加新option
-        childFetchData(obj, 'http://guohan912.cn/api/option/addOptionById/')
+        childFetchData(obj, 'option/addOptionById/')
 		}
     const classes = useStyles()
 
     // 添加新option
     const childFetchData = async(obj, url)=>{
-        let responseJson = await axios.post(url, obj)
+        const {success, data, message} = await AxUtil.setUrl(url).setType('POST').setBody(obj).getData()
         fetchData()
-        if(responseJson.data.success){
-            MyAlert.show(responseJson.data.message,"success")
+        if(success){
+            MyAlert.show(message,"success")
             setValue(question_id, '')
         }else{
-            MyAlert.show(responseJson.data.message,"error")
+            MyAlert.show(message,"error")
         }
     }
 
@@ -103,7 +106,7 @@ const MultiChoice = React.memo(({data, animateFlag, fetchData})=>{
             question_index,
         }
         // 添加新修改option
-        childFetchData(obj, 'http://guohan912.cn/api/option/updateOneOption/')
+        childFetchData(obj, 'option/updateOneOption/')
     }
 
     // 删除option
@@ -114,8 +117,8 @@ const MultiChoice = React.memo(({data, animateFlag, fetchData})=>{
         }
 
         // 添加新修改option
-        MyDialog.show("确定删除吗?","QwQ",()=>{childFetchData(obj, 'http://guohan912.cn/api/option/deleteOptionById/')})
-        // childFetchData(obj, 'http://guohan912.cn/api/api/api/option/deleteOptionById/')
+        MyDialog.show("确定删除吗?","QwQ",()=>{childFetchData(obj, 'option/deleteOptionById/')})
+        // childFetchData(obj, 'http://localhost:8000/api/api/api/option/deleteOptionById/')
     }
 
     return <React.Fragment>
@@ -216,4 +219,4 @@ const MultiChoice = React.memo(({data, animateFlag, fetchData})=>{
 </React.Fragment>
 })
 
-export default MultiChoice;
+export default MultiChoice

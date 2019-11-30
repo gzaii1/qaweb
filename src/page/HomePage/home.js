@@ -2,7 +2,7 @@ import React, {
 	useState,
 	useEffect,
 	useReducer,
-} from 'react';
+} from 'react'
 import {
 	Button,
 	Box,
@@ -27,17 +27,17 @@ import {
 	AppBar,
 	Tab,
 	Tabs,
-} from '@material-ui/core';
-import axios from 'axios';
-import './home.css';
-import 'animate.css';
+} from '@material-ui/core'
+import axios from 'axios'
+import './home.css'
+import 'animate.css'
 
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import PropTypes from 'prop-types'
+import clsx from 'clsx'
 import {
 	amber,
 	green
-} from '@material-ui/core/colors';
+} from '@material-ui/core/colors'
 import {
 	Warning as WarningIcon,
 	Error as ErrorIcon,
@@ -51,10 +51,10 @@ import {
 	DeleteForever as DeleteForeverIcon,
 	Cancel as CancelIcon,
 	Edit as EditIcon,
-} from '@material-ui/icons';
+} from '@material-ui/icons'
 import {
 	makeStyles
-} from '@material-ui/core/styles';
+} from '@material-ui/core/styles'
 import useForm from 'react-hook-form'
 import SingleChoice from '../components/SingleChoice'
 import MultiChoice from '../components/MultiChoice'
@@ -63,6 +63,7 @@ import AddNewQuestion from '../components/AddNewQuestion'
 import MyAlert from '../../utils/myAlert/MyAlert'
 import MyDialog from '../../utils/myDialog/MyDialog'
 
+import axiosUtil from '../../utils/axiosUtil/axiosUtil'
 const useStyles = makeStyles(theme => ({
 	container: {
 		display: 'flex',
@@ -71,7 +72,7 @@ const useStyles = makeStyles(theme => ({
 	formControl: {
 		margin: theme.spacing(1),
 	},
-}));
+}))
 
 
 
@@ -80,7 +81,10 @@ const variantIcon = {
 	warning: WarningIcon,
 	error: ErrorIcon,
 	info: InfoIcon,
-};
+}
+
+// axios异步获取数据
+const AxUtil = new axiosUtil()
 
 const HomePage = React.memo((props) => {
 		// 获取全部问题
@@ -107,11 +111,10 @@ const HomePage = React.memo((props) => {
 
 		async function fetchData() {
 			// 为给定 ID 的 user 创建请求
-			let data = await axios.get('http://guohan912.cn/api/question/getAllQuestion/')
-			if (data.status === 200) {
-				setDataSource(data.data.data)
-			}
-			console.log('fetchdata')
+			const { success, data }= await AxUtil.setUrl('question/getAllQuestion/').setType('GET').getData()
+				if(success){
+					setDataSource(data)
+				}
 		}
 
 		// 删除动画效果
@@ -128,13 +131,12 @@ const HomePage = React.memo((props) => {
 			const body = {
 				"question_id": id ? id : ''
 			}
-			const data = await axios.post('http://guohan912.cn/api/question/deleteQuestionById/', body)
-			if (data.status === 200) {
+			const {success, data} = await AxUtil.setUrl('question/deleteQuestionById/').setType('POST').setBody(body).getData()
+
+			if(success){
 				MyAlert.show('问题已删除!', 'success')
 				// 删除动画
-				deleteAnimate(id, 500, 'targetOnly')
-			} else {
-				MyAlert.show('未知错误!', 'error')
+				deleteAnimate(id, 500, 'targetOnly')	
 			}
 		}
 
@@ -156,7 +158,7 @@ const HomePage = React.memo((props) => {
 			// 获取页面初始数据
 			fetchData()
 		}
-		const classes = useStyles();
+		const classes = useStyles()
 
 	return (
 		<Box className={'HomePage'}>
@@ -235,4 +237,4 @@ const HomePage = React.memo((props) => {
 	)
 })
 
-export default HomePage;
+export default HomePage
