@@ -50,7 +50,7 @@
     "react": "^16.11.0",
     "react-animated-css": "^1.2.1",
     "react-app-polyfill": "^1.0.4",
-    "react-dev-utils": "^9.1.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.11.0",
     "react-hook-form": "^3.27.0",
     "react-router": "^5.1.2",
